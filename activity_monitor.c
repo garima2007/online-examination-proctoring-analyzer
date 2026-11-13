@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#define MAX_ACTIVITIES 100
 typedef struct {
     int candidate_id;
     char event_type[50];
@@ -10,21 +11,52 @@ typedef struct {
 
 int main() {
 
-    Activity event;
+    Activity activities[MAX_ACTIVITIES];
+    int count = 0;
 
-    event.candidate_id = 101;
-    strcpy(event.event_type, "prolonged_gaze_away");
-    strcpy(event.timestamp, "10:32:15");
-    event.duration = 7.0;
-    strcpy(event.details, "Gaze detected outside permitted region");
+    // Sample Activity 1
+    activities[count].candidate_id = 101;
+    strcpy(activities[count].event_type, "prolonged_gaze_away");
+    strcpy(activities[count].timestamp, "10:32:15");
+    activities[count].duration = 7.0;
+    strcpy(activities[count].details,
+           "Gaze outside permitted region");
+    count++;
 
-    printf("=== Activity Monitor ===\n\n");
+    activities[count].candidate_id = 101;
+    strcpy(activities[count].event_type, "tab_switch_detected");
+    strcpy(activities[count].timestamp, "10:40:20");
+    activities[count].duration = 5.0;
+    strcpy(activities[count].details,
+           "Candidate switched from exam window");
+    count++;
 
-    printf("Candidate ID : %d\n", event.candidate_id);
-    printf("Event        : %s\n", event.event_type);
-    printf("Timestamp    : %s\n", event.timestamp);
-    printf("Duration     : %.1f seconds\n", event.duration);
-    printf("Details      : %s\n", event.details);
+    activities[count].candidate_id = 102;
+    strcpy(activities[count].event_type, "multiple_faces_detected");
+    strcpy(activities[count].timestamp, "10:45:10");
+    activities[count].duration = 8.0;
+    strcpy(activities[count].details,
+           "More than one face detected");
+    count++;
+
+    printf("\n=== PROCTORING ACTIVITY MONITOR ===\n\n");
+
+    for (int i = 0; i < count; i++) {
+
+        printf("Activity %d\n", i + 1);
+        printf("Candidate ID : %d\n",
+               activities[i].candidate_id);
+        printf("Event        : %s\n",
+               activities[i].event_type);
+        printf("Timestamp    : %s\n",
+               activities[i].timestamp);
+        printf("Duration     : %.1f seconds\n",
+               activities[i].duration);
+        printf("Details      : %s\n\n",
+               activities[i].details);
+    }
+
+    printf("Total suspicious activities: %d\n", count);
 
     return 0;
 }
