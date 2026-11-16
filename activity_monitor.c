@@ -3,8 +3,7 @@
 
 #define MAX_ACTIVITIES 100
 
-typedef struct 
-{
+typedef struct {
     int candidate_id;
     char event_type[50];
     char timestamp[20];
@@ -12,8 +11,6 @@ typedef struct
     char details[100];
 } Activity;
 
-
-/* Adds a new activity to the activity list */
 void addActivity(Activity activities[], int *count,
                  int candidate_id,
                  char event_type[],
@@ -38,8 +35,6 @@ void addActivity(Activity activities[], int *count,
     (*count)++;
 }
 
-
-/* Displays all recorded activities */
 void displayActivities(Activity activities[], int count) {
 
     printf("\n=== PROCTORING ACTIVITY MONITOR ===\n\n");
