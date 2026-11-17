@@ -36,3 +36,17 @@ Candidate gives exam
 → Cases are prioritized for manual review
 
 The project will later use different DAA algorithms to analyze and compare these events efficiently.
+
+Before Sorting:
+
+prolonged_gaze_away       7 sec
+tab_switch_detected       5 sec
+multiple_faces_detected   8 sec
+
+Merge Sort
+
+After Sorting:
+
+multiple_faces_detected   8 sec
+prolonged_gaze_away       7 sec
+tab_switch_detected       5 sec
